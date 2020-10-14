@@ -29,7 +29,7 @@ const LoginForm = ({handleSubmit, error}) => {
           <Field className={s.checkbox} type="checkbox" name="rememberMe" component={Input} />
           <span>Remember me</span>
         </label>
-          <button className={s.form_button}  type="submit">Sign In</button>
+          <button className={s.form_button} onTouchEnd={handleSubmit}  type="submit">Sign In</button>
       </form>
   );
 };
