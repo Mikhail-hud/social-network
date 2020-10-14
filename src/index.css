@@ -1,0 +1,25 @@
+* {
+  margin: 0px;
+  padding: 0px;
+
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0%;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  font-size:16px;
+  font-family:Roboto,sans-serif;
+  background-image: url('./body-bg.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+h1,h2,h3,h4,h5,h6, a, p, span, button, input {
+  font-family:IBM Plex Serif,serif;
+  font-weight: 500;
+}
+
+
