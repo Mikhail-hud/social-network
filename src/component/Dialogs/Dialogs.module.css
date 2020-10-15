@@ -37,11 +37,6 @@
   ALIGN-ITEMS: baseline;
 }
 
-.dialogs_users_container:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  border-radius: 15px;
-}
-
 .dialogs_users_logo p {
   text-align: center;
   font-style: oblique;
