@@ -30,13 +30,17 @@ const ProfileInfo = (props) => {
   return (
     <section className={s.profile}>
       <aside className={s.profile_card}>
+      {props.isOwner &&
+      <div className={s.example_1}>
+          <div className={s.form_group}>
+            <label className={s.label}>
+              <i className="material-icons">add_a_photo</i>
+              <input type="file" onChange={onMainPhotoSelected}/>
+            </label>
+          </div>
+        </div>}
         <div className={s.profile_card_avatar}>
           <img src={props.profile.photos.large || logo_main } alt='avatar' />
-          {props.isOwner &&
-          <label className={s.custom_file_upload}>
-            <input onChange={onMainPhotoSelected} type="file"/>
-             <i>Click to update photo!</i> 
-          </label>}
           <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
         </div>
         {editMode ? 
@@ -53,10 +57,9 @@ const ProfileData = (props) => {
     <div className={s.profile_container}>
       {props.isOwner && <div><button onClick={props.goToEditMode}> Edit profile!</button></div>}
       <h2>{props.profile.fullName}</h2>
-      <p className={props.profile.aboutMe ? '': `${s.none}`}>About me: {props.profile.aboutMe}</p>
-      <p>Looking for a job: {props.profile.lookingForAJob ? 'Yes!': 'No !'}</p>
-      {props.profile.lookingForAJob && <p>My skills: {props.profile.lookingForAJobDescription}</p> }
-      <h3>Contacts:</h3>
+      <p className={props.profile.aboutMe ? '': `${s.none}`}><b>About me:</b> {props.profile.aboutMe}</p>
+      <p><b>Looking for a job:</b> {props.profile.lookingForAJob ? 'Yes!': 'No !'}</p>
+      {props.profile.lookingForAJob && <p><b>My skills:</b> {props.profile.lookingForAJobDescription}</p> }
       {Object.keys(props.profile.contacts).map(key => {
       return <Contact contactTitle={key} key={key} contactValue={props.profile.contacts[key]}/>
       })}
@@ -67,7 +70,7 @@ const ProfileData = (props) => {
 const Contact = ({contactTitle, contactValue}) => {
   return  (
     <>
-      <p className={contactValue ? '': `${s.none}`}>{contactTitle}: {contactValue}</p>
+      <p className={contactValue ? '': `${s.none}`}><b>{contactTitle}:</b> {contactValue}</p>
     </>
   )
 }
