@@ -1,5 +1,5 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, reset } from "redux-form";
 import {Textarea} from './../../../Common/FormsControl/FormsControl'
 import s from "../Dialogs.module.css";
 import {maxLengthCreator} from '../../../units/validators'
@@ -17,8 +17,12 @@ const AddMessageForm = (props) => {
       </form>
     )
   }
-  
+
+const afterSubmit = (result, dispatch) => {
+  dispatch(reset('dialogAddMessageForm'));
+}
   
 export default reduxForm(
-    {form: 'dialogAddMessageForm'}
+    {form: 'dialogAddMessageForm',
+    onSubmitSuccess: afterSubmit,}
   )(AddMessageForm)

@@ -29,7 +29,7 @@ const Dialogs = (props) => {
         </div>
         <div className={s.dialogs_users}>
           {mesageElements}
-          <AddMessageForm onSubmit={addNewMessage}/>
+          <AddMessageForm onSubmit={addNewMessage} afterSubmit={props.afterSubmit}/>
         </div>
       </section>
     </>

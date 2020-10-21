@@ -38,7 +38,29 @@
   font-size: 14px;
   line-height: 1.5rem;
   align-self: center;
+  text-align: center;
 }
+.profile_container div {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.profile_container button {
+  border: 1px solid #f5c9f5;
+  padding: 13px 6px;
+  font-family: IBM Plex Serif,serif;
+  cursor: pointer;
+  position: absolute;
+  top: 103px;
+  right: 18px;
+  border-radius: 5px;
+}
+
+.profile_container button:hover {
+  box-shadow: 0 8px 16px 0 #f5c9f5;
+}
+
+
 
 input[type="file"] {
   display: none;
@@ -53,4 +75,22 @@ input[type="file"] {
   box-shadow: 0 8px 16px 0 #e2dde2;
   border-radius: 10px;
 }
+.none {
+  display: none;
+}
+
+
+@media (max-width: 1024px) { 
+  .profile_container button {
+    top: 239px;
+    right: 21px;
+  }
+
+}
+@media (max-width: 500px) { 
+  .profile_container button {
+    top: 187px;
+    right: 17px;
+  }
   
+}

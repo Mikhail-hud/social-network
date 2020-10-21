@@ -2,7 +2,7 @@ import React from "react";
 import s from "../MyPosts.module.css";
 import {maxLengthCreator} from '../../../../units/validators'
 import {Textarea} from '../../../../Common/FormsControl/FormsControl'
-import {Field, reduxForm } from "redux-form";
+import {Field, reduxForm, reset} from "redux-form";
 
 
 const maxLength = maxLengthCreator(100)
@@ -18,7 +18,13 @@ const AddNewPostForm = (props) => {
       </form>
     );
   };
+
+
+const afterSubmit = (result, dispatch) => {
+  dispatch(reset('profileAddNewPostForm'));
+ }
   
 export default reduxForm (
-    {form: 'profileAddNewPostForm'}
+    {form: 'profileAddNewPostForm',
+    onSubmitSuccess: afterSubmit,}
   )(AddNewPostForm)

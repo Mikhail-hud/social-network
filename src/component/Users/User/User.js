@@ -4,7 +4,6 @@ import logo from "./logo.png";
 import { NavLink } from "react-router-dom";
 
 let User = ({user,followingInProgress, unFollow, follow}) => {
- 
   return (
       <section className={s.users_container} key={user.id}>
           <div className={s.users_logo}>

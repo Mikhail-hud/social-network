@@ -1,32 +1,35 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import n from "./Nav.module.css";
+import s from "./Nav.module.css";
 
 const NavWithHooks = () => {
   let [toggle, toggleMenu] = useState(false);
 
   const setToggleMenu = () => {
-    toggleMenu(!toggle)
+    toggleMenu(true)
+  }
 
+  const closeToggleMenu = () => {
+    toggleMenu(false)
   }
     return (
-      <nav className={n.nav}>
+      <nav className={s.nav}>
         <h1>Welcome</h1>
-        <ul className={toggle ? `${n.toggle}` : ""}>
+        <ul className={toggle ? `${s.toggle}` : ""}>
           <li>
-            <NavLink to="/profile">Profile</NavLink>
+            <NavLink onClick={closeToggleMenu} to="/profile">Profile</NavLink>
           </li>
           <li>
-            <NavLink to="/dialogs">Dialogs</NavLink>
+            <NavLink onClick={closeToggleMenu} to="/dialogs">Dialogs</NavLink>
           </li>
           <li>
-            <NavLink to="/users">Users</NavLink>
+            <NavLink onClick={closeToggleMenu} to="/users">Users</NavLink>
           </li>
-          <li className={n.close} onClick={setToggleMenu}>
+          <li className={s.close} onClick={closeToggleMenu}>
             x
           </li>
         </ul>
-        <div className={n.menu} onClick={setToggleMenu}>
+        <div className={s.menu} onClick={setToggleMenu}>
           Menu
         </div>
       </nav>
