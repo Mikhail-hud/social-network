@@ -1,43 +1,43 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "530eac05884e707f72a06cf96efedaeb",
+    "revision": "09c9f27ffdee9bf796ed5dce48fa7e53",
     "url": "/social-network/index.html"
   },
   {
-    "revision": "094d1759ecc108850df8",
+    "revision": "e9bc6a72e945510ddc67",
     "url": "/social-network/static/css/3.aa8bcc87.chunk.css"
   },
   {
-    "revision": "e7973f7c4c16be8809b7",
+    "revision": "907afef08239b7102487",
     "url": "/social-network/static/css/4.d3210e84.chunk.css"
   },
   {
-    "revision": "32f720e6033c6563078a",
+    "revision": "d7984e0053a354bd2eb6",
     "url": "/social-network/static/css/main.baba803a.chunk.css"
   },
   {
-    "revision": "4c81eddd8f3625580778",
-    "url": "/social-network/static/js/2.8f9a6c00.chunk.js"
+    "revision": "eb0e2d067c7e87db0d24",
+    "url": "/social-network/static/js/2.09bd6341.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/social-network/static/js/2.8f9a6c00.chunk.js.LICENSE.txt"
+    "url": "/social-network/static/js/2.09bd6341.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "094d1759ecc108850df8",
-    "url": "/social-network/static/js/3.4716bb55.chunk.js"
+    "revision": "e9bc6a72e945510ddc67",
+    "url": "/social-network/static/js/3.b8a80820.chunk.js"
   },
   {
-    "revision": "e7973f7c4c16be8809b7",
-    "url": "/social-network/static/js/4.5adfe57a.chunk.js"
+    "revision": "907afef08239b7102487",
+    "url": "/social-network/static/js/4.bf5b5e9d.chunk.js"
   },
   {
-    "revision": "32f720e6033c6563078a",
-    "url": "/social-network/static/js/main.e38f0571.chunk.js"
+    "revision": "d7984e0053a354bd2eb6",
+    "url": "/social-network/static/js/main.3c740f0c.chunk.js"
   },
   {
-    "revision": "290171b9c5bbd63e8aa3",
-    "url": "/social-network/static/js/runtime-main.5a4d5bbb.js"
+    "revision": "41c114099d67f90f9ec2",
+    "url": "/social-network/static/js/runtime-main.377b9392.js"
   },
   {
     "revision": "2ada898d22a4c12b799993854ba44d61",
