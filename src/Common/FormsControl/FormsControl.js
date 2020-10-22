@@ -6,7 +6,7 @@ export const Textarea = ({ input, meta:{touched,error}, ...props }) => {
   return (
     <>
       {hasEror && <span className={s.error}>{error}</span>}
-      <textarea {...input} {...props} />
+      <textarea className={hasEror ? s.message_tx_error : s.message_tx_in} {...input} {...props} />
     </>
   );
 };
@@ -18,7 +18,7 @@ export const Input = ({ input, meta:{touched,error}, ...props }) => {
   return (
     <>
       {hasEror && <p className={s.error}>{error}</p>}
-      <input {...input} {...props} />
+      <input  {...input} {...props} />
     </>
   );
 };

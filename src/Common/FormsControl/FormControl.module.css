@@ -3,3 +3,23 @@
     margin-left: 20px;
     border: 5 px solid black;
 }
+
+.message_tx_in {
+    width: 100%;
+    margin: 0 20px 10px 20px;;
+    border-radius:6px;
+    border:1px solid #f5c9f5;
+  }
+  .message_tx_in:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .message_tx_error {
+    width: 100%;
+    margin: 0 20px 10px 20px;;
+    border-radius:6px;
+    border:1px solid rgb(243, 7, 7);
+  }
+  .message_tx_error:focus {
+    background: rgb(241, 196, 206);
+  }

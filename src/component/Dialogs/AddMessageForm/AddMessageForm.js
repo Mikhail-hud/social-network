@@ -9,7 +9,7 @@ const AddMessageForm = (props) => {
     return  (
       <form className={s.message} onSubmit={props.handleSubmit}>
         <label className={s.message_tx}>
-          <Field className={s.message_tx_in}  component={Textarea} name='newMessageBody' validate={maxLength} />
+          <Field component={Textarea} name='newMessageBody' validate={maxLength} />
         </label>
         <label>
           <button className={s.message_tx_btn} type="submit" >Send</button>
