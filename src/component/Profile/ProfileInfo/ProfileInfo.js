@@ -31,7 +31,7 @@ const ProfileInfo = (props) => {
     <section className={s.profile}>
       <aside className={s.profile_card}>
       {props.isOwner &&
-      <div className={s.example_1}>
+        <div className={s.example_1}>
           <div className={s.form_group}>
             <label className={s.label}>
               <i className="material-icons">add_a_photo</i>

@@ -51,6 +51,7 @@
 
 .profile_container button:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  border:1px solid #f5c9f5;
 }
 input[type="file"] {
   display: none;
@@ -73,9 +74,6 @@ input[type="file"] {
   }
 }
 
-.example_1 .form_group {
-  position: relative;
-}
 .example_1 input[type=file] { 
   outline:0;
   opacity:0;
