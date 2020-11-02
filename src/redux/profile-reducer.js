@@ -9,11 +9,11 @@ const SAVE_PHOTO_SUCCESS = "SAVE-PHOTO-SUCCESS"
 
 let initialState = {
     posts: [
-      { id: 1, message: "React.Js, - a JavaScript library for building user interfaces", likesCount: 12 },
-      { id: 2, message: "React makes it painless to create interactive UIs.", likesCount: 14 },
+      { id: 1, message: "React.Js, - a JavaScript library for building user interfaces", likesCount: 1 },
+      { id: 2, message: "React makes it painless to create interactive UIs.", likesCount: 6 },
       { id: 3, message: "Build encapsulated components that manage their own state, then compose them to make complex UIs.", likesCount: 2 },
-      { id: 4, message: "We don’t make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code", likesCount: 5 },
-      { id: 5, message: "Have a good day!!!!", likesCount: 12 },
+      { id: 4, message: "We don’t make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code", likesCount: 7 },
+      { id: 5, message: "Have a good day!!!!", likesCount: 5 },
     ],
     profile: null,
     status: '',
@@ -27,7 +27,7 @@ const profileReducer = (state = initialState, action) => {
       let newPost = {
         id: 6,
         message: action.newPostText,
-        likesCount: 2,
+        likesCount: 0,
       };
       return {
         ...state, 
@@ -35,7 +35,7 @@ const profileReducer = (state = initialState, action) => {
         newPostText: '',
       }
     } 
-
+    
     case SET_USER_PROFILE: {
       return {
         ...state,
@@ -63,7 +63,6 @@ const profileReducer = (state = initialState, action) => {
       return state;
   }
 };
-
 
 export const addPostActionCreator = (newPostText) => ({type: ADD_POST, newPostText})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile:profile})

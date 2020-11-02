@@ -6,7 +6,7 @@ export const Textarea = ({ input, meta:{touched,error}, ...props }) => {
   return (
     <>
       {hasEror && <span className={s.error}>{error}</span>}
-      <textarea className={hasEror ? s.message_tx_error : s.message_tx_in} {...input} {...props} />
+      <textarea className={hasEror ? `${s.message_tx_error} ${s.message_tx_in}` : s.message_tx_in} {...input} {...props} />
     </>
   );
 };

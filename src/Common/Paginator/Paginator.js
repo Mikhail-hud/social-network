@@ -4,6 +4,7 @@ import s from './Paginator.module.css'
 
 let Paginator = ({totalItemsCount,pageSize, onPageChanged, currentPage, portionSize = 5}) => {
   
+  
   let pagesCount = Math.ceil(totalItemsCount / pageSize);
 
   let pages = [];

@@ -4,6 +4,7 @@ import { Route, withRouter, HashRouter, Switch, Redirect} from "react-router-dom
 import store from "../../redux/redux-store";
 import UsersContainer from "../Users/Users-container";
 import HeaderContainer from "../Header/Header-container";
+import FriendsContainer from '../Friends/Friends-container'
 import Login from "../Login/Login";
 import NavContainer from "../Nav/Nav-container";
 import { compose } from "redux";
@@ -46,6 +47,7 @@ class App extends React.Component {
             <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)}/>
             <Route path="/dialogs" render={withSuspense(DialogsContainer)}/>
             <Route path="/users" render={() => <UsersContainer />} />
+            <Route path="/friends" render={() => <FriendsContainer />} />
             <Route path="/login" render={() => <Login />} />
             <Route path="*" render={() => <section>404 not found</section>} />
           </Switch>
@@ -54,6 +56,8 @@ class App extends React.Component {
     );
   }
 }
+
+
 
 let mapStateToProps = (state) => {
   return {

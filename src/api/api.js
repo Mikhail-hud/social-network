@@ -16,6 +16,14 @@ export const usersAPI = {
         return response.data;
       });
   },
+
+  getFriends(currentPage, pageSize) {
+    return instance
+      .get(`users?page=${currentPage}&count=${pageSize}&friend=${true}`)
+      .then((response) => {
+        return response.data;
+      });
+  },
   unfollow(id) {
     return instance.delete(`follow/${id}`);
   },

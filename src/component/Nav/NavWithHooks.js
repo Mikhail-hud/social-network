@@ -25,6 +25,9 @@ const NavWithHooks = () => {
           <li>
             <NavLink onClick={closeToggleMenu} to="/users">Users</NavLink>
           </li>
+          <li>
+            <NavLink onClick={closeToggleMenu} to="/friends">Friends</NavLink>
+          </li>
           <li className={s.close} onClick={closeToggleMenu}>
             x
           </li>

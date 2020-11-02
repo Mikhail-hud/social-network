@@ -3,9 +3,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
     overflow: hidden;
     animation-delay: 1s;
+    height: 50px;
   }
   
   .item_1 {

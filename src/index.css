@@ -16,8 +16,9 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  background-color: rgb(241, 241, 261);
 }
-h1,h2,h3,h4,h5,h6, a, p, span, button, input, i {
+h1,h2,h3,h4,h5,h6, a, p, span, button, input, textarea, i {
   font-family:IBM Plex Serif,serif;
 
 }

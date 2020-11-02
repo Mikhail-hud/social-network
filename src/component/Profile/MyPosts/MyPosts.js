@@ -8,10 +8,11 @@ const MyPosts = (props) => {
     <Posts massage={p.message} likesCount={p.likesCount} key={p.id} />
   ));
 
-  let onAddPost = (value) => {
+  const onAddPost = (value) => {
     props.addPost(value.newPostText);
   };
-
+  
+  
   return (
     <section className={s.myposts}>
       <h2>My posts</h2>
