@@ -1,111 +1,148 @@
-import {profileAPI} from './../api/api';
+import { profileAPI } from './../api/api';
 import { stopSubmit } from 'redux-form';
-const ADD_POST = "ADD-POST";
-const SET_USER_PROFILE = "SET-USER-PROFILE";
-const SET_STATUS = "SET-STATUS";
-const SAVE_PHOTO_SUCCESS = "SAVE-PHOTO-SUCCESS"
-
-
+const ADD_POST = 'ADD-POST';
+const DELETE_POST = 'DELETE-POST';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const SET_STATUS = 'SET-STATUS';
+const SAVE_PHOTO_SUCCESS = 'SAVE-PHOTO-SUCCESS';
+const ADD_LIKE = 'ADD-LIKE';
 
 let initialState = {
-    posts: [
-      { id: 1, message: "React.Js, - a JavaScript library for building user interfaces", likesCount: 1 },
-      { id: 2, message: "React makes it painless to create interactive UIs.", likesCount: 6 },
-      { id: 3, message: "Build encapsulated components that manage their own state, then compose them to make complex UIs.", likesCount: 2 },
-      { id: 4, message: "We don’t make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code", likesCount: 7 },
-      { id: 5, message: "Have a good day!!!!", likesCount: 5 },
-    ],
-    profile: null,
-    status: '',
+  posts: [
+    {
+      id: 1,
+      message: 'React.Js, - a JavaScript library for building user interfaces',
+      likesCount: 1,
+    },
+    { id: 2, message: 'React makes it painless to create interactive UIs.', likesCount: 6 },
+    {
+      id: 3,
+      message:
+        'Build encapsulated components that manage their own state, then compose them to make complex UIs.',
+      likesCount: 2,
+    },
+    {
+      id: 4,
+      message:
+        'We don’t make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code',
+      likesCount: 7,
+    },
+    { id: 5, message: 'Have a good day!!!!', likesCount: 5 },
+  ],
+  profile: null,
+  status: '',
 };
 
 const profileReducer = (state = initialState, action) => {
-
   switch (action.type) {
-
     case ADD_POST: {
+      let rand = 10 + Math.random() * (99 + 1 - 10);
       let newPost = {
-        id: 6,
+        id: rand,
         message: action.newPostText,
         likesCount: 0,
       };
       return {
-        ...state, 
+        ...state,
         posts: [...state.posts, newPost],
         newPostText: '',
-      }
-    } 
-    
+      };
+    }
+
+    case DELETE_POST: {
+      return {
+        ...state,
+        posts: state.posts.filter((post) => {
+          if (post.id !== action.id) {
+            return {
+              ...post,
+            };
+          }
+          return null
+        }),
+      };
+    }
+
     case SET_USER_PROFILE: {
       return {
         ...state,
         profile: action.profile,
-      }
-
+      };
     }
 
     case SET_STATUS: {
       return {
         ...state,
         status: action.status,
-      }
-
+      };
     }
 
     case SAVE_PHOTO_SUCCESS: {
       return {
         ...state,
-        profile : {...state.profile, photos: action.photos},
-      }
+        profile: { ...state.profile, photos: action.photos },
+      };
+    }
 
+    case ADD_LIKE: {
+      return {
+        ...state,
+        posts: state.posts.map((likes) => {
+          if (likes.id === action.id) {
+            return {
+              ...likes,
+              likesCount: likes.likesCount + 1,
+            };
+          }
+          return likes;
+        }),
+      };
     }
     default:
       return state;
   }
 };
 
-export const addPostActionCreator = (newPostText) => ({type: ADD_POST, newPostText})
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile:profile})
-export const setStatus = (status) => ({type:SET_STATUS, status: status })
-export const savePhotoSuccess = (photos) => ({type:SAVE_PHOTO_SUCCESS, photos: photos })
+export const addPostActionCreator = (newPostText) => ({ type: ADD_POST, newPostText });
+export const deletePostActionCreator = (id) => ({ type: DELETE_POST, id });
+export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile: profile });
+export const setStatus = (status) => ({ type: SET_STATUS, status: status });
+export const savePhotoSuccess = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos: photos });
+export const addLikeActionCreator = (id) => ({ type: ADD_LIKE, id });
 
-
-
-export const getUserProfile = (userId) => async(dispatch) => {
+export const getUserProfile = (userId) => async (dispatch) => {
   const response = await profileAPI.getProfile(userId);
   dispatch(setUserProfile(response.data));
-}
+};
 
-
-export const getStatus = (userId) => async(dispatch) => {
+export const getStatus = (userId) => async (dispatch) => {
   const response = await profileAPI.getStatus(userId);
   dispatch(setStatus(response.data));
-}
+};
 
 export const updateStatus = (status) => async (dispatch) => {
   const response = await profileAPI.updateStatus(status);
-  if(response.data.resultCode === 0) {
+  if (response.data.resultCode === 0) {
     dispatch(setStatus(status));
   }
-}
-
+};
 
 export const savePhoto = (file) => async (dispatch) => {
   const response = await profileAPI.savePhoto(file);
-  if(response.data.resultCode === 0) {
+  if (response.data.resultCode === 0) {
     dispatch(savePhotoSuccess(response.data.data.photos));
   }
-}
+};
 
 export const saveProfile = (profile) => async (dispatch, getState) => {
-  const userId = getState().auth.id
+  const userId = getState().auth.id;
   const response = await profileAPI.saveProfile(profile);
-  if(response.data.resultCode === 0) {
+  if (response.data.resultCode === 0) {
     dispatch(getUserProfile(userId));
   } else {
-    dispatch(stopSubmit('edit-profile', {_error: response.data.messages[0]}));
+    dispatch(stopSubmit('edit-profile', { _error: response.data.messages[0] }));
     return Promise.reject(response.data.messages[0]);
   }
-}
+};
 
 export default profileReducer;

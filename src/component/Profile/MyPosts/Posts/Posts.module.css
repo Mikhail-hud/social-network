@@ -1,15 +1,14 @@
 
 .posts {
   display: flex;
-  flex-wrap: wrap;
-  margin: 10px 0 10px 20px;
+  margin: 10px 20px;
 }
 .posts_logo {
   align-self:center;
 }
 .posts_text {
-  width: 70%;
-  padding-left: 10px;
+  width: 83%;
+  padding: 0 10px;
   font-size: 14px;
 }
 .posts_text p {
@@ -32,6 +31,7 @@
 }
 .posts_likes i {
   padding: 10px;
+  cursor: pointer;
 }
 
 .posts_likes i:hover {
@@ -39,4 +39,35 @@
   border-radius: 10px;
 }
 
+.delete_post {
+  display: flex;
+  justify-content: flex-end;
+  align-self: baseline;
+}
+.delete_post img {
+  max-width: 64%;
+  cursor: pointer;
+  max-height: 26px;
+  padding: 2px;
+}
+.delete_post img:hover {
+  box-shadow: 0 8px 16px 0 #dd87dd;
+}
 
+@media (max-width: 500px) { 
+  .posts {
+    flex-wrap: wrap;
+  }
+  .posts_text {
+    width: 77%;
+  }
+}
+@media (max-width: 374px) { 
+  .posts_text {
+    width: 100%;
+  }
+  .delete_post {
+    margin-left: 2px;
+  }
+  
+}

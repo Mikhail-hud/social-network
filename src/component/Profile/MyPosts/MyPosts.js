@@ -3,9 +3,9 @@ import s from "./MyPosts.module.css";
 import Posts from "./Posts/Posts";
 import AddNewPostForm from './AddPostForm/AddPostForm'
 
-const MyPosts = (props) => {
+const MyPosts = ({...props}) => {
   let postsElements = [...props.posts].reverse().map((p) => (
-    <Posts massage={p.message} likesCount={p.likesCount} key={p.id} />
+    <Posts massage={p.message} likesCount={p.likesCount} key={p.id} id={p.id} onAddLike={props.addLike} onDeletePost={props.deletePost}/>
   ));
 
   const onAddPost = (value) => {
