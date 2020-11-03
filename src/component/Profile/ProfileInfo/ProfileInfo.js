@@ -70,7 +70,7 @@ const ProfileData = (props) => {
 const Contact = ({contactTitle, contactValue}) => {
   return  (
     <>
-      <p className={contactValue ? '': `${s.none}`}><b>{contactTitle}:</b> {contactValue}</p>
+      <a className={s.contacts_link} href={contactValue}><p className={contactValue ? '': `${s.none}`}><b>{contactTitle}:</b> {contactValue}</p></a>
     </>
   )
 }

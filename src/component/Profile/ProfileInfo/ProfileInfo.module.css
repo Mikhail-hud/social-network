@@ -108,3 +108,8 @@ input[type="file"] {
 .example_1 .label:hover i,.example_1 .label:hover .title {
 color:#000
 }
+
+.contacts_link {
+  color: #000;
+  text-decoration: none;
+}
