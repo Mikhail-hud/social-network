@@ -5,6 +5,7 @@ const SET_TOTAL_FRIENDS_COUNT = 'SET-TOTAL-FRIENDS-COUNT'
 const TOGGLE_IS_FETCHING_FRIENDS = 'TOGGLE-IS-FETCHING-FRIENDS'
 const TOGGLE_IS_REMOVING_PROGRESS = 'TOGGLE-IS-REMOVING-PROGRESS'
 const CLEAR_IN_FOLLOWING_PROGRESS = 'CLEAR_IN_FOLLOWING_PROGRESS'
+const DELETE_FREND = 'DELETE-FREND'
 
 let initialState = {
   friends: [],
@@ -22,6 +23,19 @@ const  friendReducer= (state = initialState, action) => {
         ...state,
         friends: action.friends,
       };
+      
+      case DELETE_FREND:
+        return {
+          ...state,
+          friends: state.friends.filter((friend) => {
+            if (friend.id !== action.id) {
+              return {
+                ...friend,
+              };
+            }
+            return null
+          }),
+        };
 
     case SET_CURRENT_PAGE_FRIENDS:
       return {
@@ -61,6 +75,7 @@ export const setTotalFriendsCount = (totalFriendsCount) => ({type: SET_TOTAL_FRI
 export const toggleIsFetching = (isFetchingFriends) => ({type: TOGGLE_IS_FETCHING_FRIENDS, isFetchingFriends})
 export const toggleUnFollowingProgress = (isFetchingFriends, friendId) => ({type: TOGGLE_IS_REMOVING_PROGRESS, isFetchingFriends, friendId})
 export const clearInFollowingProgress = () => ({type: CLEAR_IN_FOLLOWING_PROGRESS})
+export const deleteFrend = (id) => ({type: DELETE_FREND, id})
 
 
 
@@ -78,12 +93,13 @@ export const requestFriends = (currentPageFriends, pageSizeFriends) => {
 }
 
 
-export const unFollowFriends = (friendId, currentPageFriends, pageSizeFriends) => {
+export const unFollowFriends = (friendId) => {
   return async (dispatch) => {
     dispatch(toggleUnFollowingProgress(true, friendId));
     let response = await usersAPI.unfollow(friendId);
     if (response.data.resultCode === 0) {
-      dispatch(requestFriends(currentPageFriends, pageSizeFriends));
+      // dispatch(requestFriends(currentPageFriends, pageSizeFriends));
+      dispatch(deleteFrend(friendId));
     }
   }
 }
