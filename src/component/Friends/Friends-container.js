@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import {withAuthRedirect} from '../../hoc/withAuthRedirect'
@@ -7,34 +7,34 @@ import Friends from "./Friends";
 import Preloader from "../../Common/Preloder/Preloader";
 import { getPageSizeFriends, getTotalCountFriends, getCurrentPageFriends, getIsFetching, getfriends, getUnFollowingInProgress} from "../../redux/friends-selectors";
 
-class FriendsContainer extends React.Component {
-  componentDidMount() {
-    const {currentPageFriends,pageSizeFriends} = this.props
-    this.props.requestFriends(currentPageFriends, pageSizeFriends);
-  }
+const FriendsContainer = ({totalFriendsCount, pageSizeFriends, currentPageFriends, friends, unFollowingInProgress, unFollowFriends, requestFriends, isFetchingFriends}) => {
 
-   onPageChanged = (pageNumber) => {
-    const {pageSizeFriends} = this.props
-    this.props.requestFriends(pageNumber,pageSizeFriends);
-  };
+  
+  useEffect(() => {
+    requestFriends(currentPageFriends, pageSizeFriends);
+  }, [currentPageFriends, pageSizeFriends, requestFriends])
 
-  render() {
+
+  const onPageChanged = (pageNumber) => {
+    requestFriends(pageNumber,pageSizeFriends);
+   }
+
     return (
       <>
-        {this.props.isFetchingFriends ? <Preloader /> : null}
+        {isFetchingFriends ? <Preloader /> : null}
         <Friends
-          totalFriendsCount={this.props.totalFriendsCount}
-          pageSizeFriends={this.props.pageSizeFriends}
-          currentPageFriends={this.props.currentPageFriends}
-          onPageChanged={this.onPageChanged}
-          friends={this.props.friends}
-          unFollowingInProgress={this.props.unFollowingInProgress}
-          unFollowFriends={this.props.unFollowFriends}
-          requestFriends={this.props.requestFriends}
+          totalFriendsCount={totalFriendsCount}
+          pageSizeFriends={pageSizeFriends}
+          currentPageFriends={currentPageFriends}
+          onPageChanged={onPageChanged}
+          friends={friends}
+          unFollowingInProgress={unFollowingInProgress}
+          unFollowFriends={unFollowFriends}
+          requestFriends={requestFriends}
         />
       </>
     );
-  }
+  
 }
 
 
