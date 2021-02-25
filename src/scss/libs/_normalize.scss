@@ -1,0 +1,130 @@
+@import '../variables';
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  background-image: url('../../assets/body-bg.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 53%;
+  background-color: rgb(241, 241, 261) !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+span,
+button,
+input,
+textarea,
+i {
+  font-family: IBM Plex Serif, serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  font-size: 21px;
+}
+
+.ant-btn-round {
+  padding: 4px 12px !important;
+}
+.ant-btn,
+.ant-btn-round.ant-btn-lg {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.ant-btn:focus {
+  color: rgba(0, 0, 0, 0.85) !important;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+.ant-comment-avatar {
+  margin-top: 0.33rem !important;
+}
+
+input[type='file'] {
+  display: none;
+  outline: 0;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ant-btn-dashed {
+  &:hover,
+  :focus {
+    // box-shadow: $pink;
+    // border: none !important;
+    color: black !important;
+    // background: none !important;
+    border-color: none !important;
+    // transform: translateY(-2px);
+  }
+}
+
+.ant-list-split .ant-list-item {
+  border-bottom: 1px solid #dbdde4 !important;
+}
+.ant-list-vertical .ant-list-item-action > li {
+  padding: 0 14px !important;
+}
+
+.ant-list-vertical .ant-list-item-extra {
+  margin-left: 10px !important;
+}
+
+.ant-list-item-action-split {
+  background-color: #9fb7e4 !important;
+}
+
+.ant-layout {
+  background: none !important;
+  min-height: 100vh !important;
+}
+
+.ant-layout-content {
+  position: relative;
+  -ms-flex: auto;
+  flex: auto;
+  min-height: 0;
+  margin: 16px 16px 24px !important;
+  padding: 20px !important;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px !important;
+}
+
+.ant-list-item-meta-content {
+  width: 100% !important;
+}
+
+.ant-drawer-title {
+  font-family: IBM Plex Serif, serif;
+  font-weight: 500;
+  font-size: 21px;
+  text-align: center;
+}
+
+.ant-btn,
+.ant-btn-primary .ant-btn-round {
+  background: $low-violet-color;
+  // box-shadow: $low-violet;
+  color: rgba(0, 0, 0, 0.85) !important;
+  font-weight: 200 !important;
+  &:hover {
+    @include hover-blue;
+  }
+}

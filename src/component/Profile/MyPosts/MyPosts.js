@@ -1,27 +1,35 @@
-import React from "react";
-import s from "./MyPosts.module.css";
-import Posts from "./Posts/Posts";
-import AddNewPostForm from './AddPostForm/AddPostForm'
+import React from 'react';
+import Posts from './Posts/Posts';
+import PostForm from './AddPostForm/PostForm';
+import { Row, Col } from 'antd';
 
-const MyPosts = ({...props}) => {
-  let postsElements = [...props.posts].reverse().map((p) => (
-    <Posts massage={p.message} likesCount={p.likesCount} key={p.id} id={p.id} onAddLike={props.addLike} onDeletePost={props.deletePost}/>
-  ));
+const MyPosts = ({ posts, addLike, addPost, deletePost, addDislike, profile, isAuth }) => {
+  let postsElements = [...posts]
+    .reverse()
+    .map((item) => (
+      <Posts
+        isAuth={isAuth}
+        massage={item.message}
+        likesCount={item.likesCount}
+        dislikesCount={item.dislikesCount}
+        key={item.id}
+        id={item.id}
+        profile={profile}
+        addDislike={addDislike}
+        addLike={addLike}
+        deletePost={deletePost}
+      />
+    ));
 
-  const onAddPost = (value) => {
-    props.addPost(value.newPostText);
-  };
-  
-  
   return (
-    <section className={s.myposts}>
+    <Row>
       <h2>My posts</h2>
-      <AddNewPostForm onSubmit={onAddPost}/>
-      {postsElements}
-    </section>
+      <Col xs={24}>{postsElements}</Col>
+      <Col xs={24}>
+        <PostForm addPost={addPost} isAuth={isAuth} />
+      </Col>
+    </Row>
   );
 };
-
-
 
 export default MyPosts;

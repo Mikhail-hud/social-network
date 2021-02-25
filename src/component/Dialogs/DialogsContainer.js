@@ -1,28 +1,18 @@
-import {
-  sendMessageCreator,
-} from "../../redux/dialogs-reducer";
-import Dialogs from "./Dialogs";
-import { connect } from "react-redux";
-import {withAuthRedirect} from '../../hoc/withAuthRedirect'
-import { compose } from "redux";
+import React, { useCallback } from 'react';
+import { sendMessage } from '../../redux/dialogs-reducer';
+import { useSelector, useDispatch } from 'react-redux';
+import DialogsPage from './DialogsPage';
 
-let mapStateToProps = (state) => {
-  return {
-    dialogsPage: state.dialogsPage,
+const DialogsContainer = () => {
+  const dispatch = useDispatch();
+  const dialogs = useSelector(({ dialogsPage }) => dialogsPage.dialogs);
+  const messages = useSelector(({ dialogsPage }) => dialogsPage.messages);
+
+  const onSendMessage = (newMessage) => {
+    dispatch(sendMessage(newMessage));
   };
+
+  return <DialogsPage dialogs={dialogs} messages={messages} onSendMessage={onSendMessage} />;
 };
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    sendMessage: (newMessageBody) => {
-      dispatch(sendMessageCreator(newMessageBody));
-    },
-  };
-};
-
-
-
-export default compose (
-  connect(mapStateToProps, mapDispatchToProps),
-  withAuthRedirect
-) (Dialogs);
+export default DialogsContainer;

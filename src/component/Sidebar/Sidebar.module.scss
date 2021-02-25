@@ -1,0 +1,11 @@
+.trigger {
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s;
+  position: sticky;
+  top: 31px;
+  left: 31px;
+  &:hover {
+    color: #1890ff;
+  }
+}

@@ -6,6 +6,7 @@ const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET-STATUS';
 const SAVE_PHOTO_SUCCESS = 'SAVE-PHOTO-SUCCESS';
 const ADD_LIKE = 'ADD-LIKE';
+const ADD_DISLIKE = 'ADD-DISLIKE';
 
 let initialState = {
   posts: [
@@ -13,21 +14,29 @@ let initialState = {
       id: 1,
       message: 'React.Js, - a JavaScript library for building user interfaces',
       likesCount: 1,
+      dislikesCount: 10,
     },
-    { id: 2, message: 'React makes it painless to create interactive UIs.', likesCount: 6 },
+    {
+      id: 2,
+      message: 'React makes it painless to create interactive UIs.',
+      likesCount: 6,
+      dislikesCount: 20,
+    },
     {
       id: 3,
       message:
         'Build encapsulated components that manage their own state, then compose them to make complex UIs.',
       likesCount: 2,
+      dislikesCount: 2,
     },
     {
       id: 4,
       message:
         'We don’t make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code',
       likesCount: 7,
+      dislikesCount: 0,
     },
-    { id: 5, message: 'Have a good day!!!!', likesCount: 5 },
+    { id: 5, message: 'Have a good day!!!!', likesCount: 5, dislikesCount: 4 },
   ],
   profile: null,
   status: '',
@@ -41,6 +50,7 @@ const profileReducer = (state = initialState, action) => {
         id: rand,
         message: action.newPostText,
         likesCount: 0,
+        dislikesCount: 0,
       };
       return {
         ...state,
@@ -58,7 +68,7 @@ const profileReducer = (state = initialState, action) => {
               ...post,
             };
           }
-          return null
+          return null;
         }),
       };
     }
@@ -87,14 +97,41 @@ const profileReducer = (state = initialState, action) => {
     case ADD_LIKE: {
       return {
         ...state,
-        posts: state.posts.map((likes) => {
-          if (likes.id === action.id) {
+        posts: state.posts.map((item) => {
+          if (item.id === action.id && item.dislikesCount > 0) {
             return {
-              ...likes,
-              likesCount: likes.likesCount + 1,
+              ...item,
+              likesCount: item.likesCount + 1,
+              dislikesCount: item.dislikesCount - 1,
+            };
+          } else if (item.id === action.id) {
+            return {
+              ...item,
+              likesCount: item.likesCount + 1,
             };
           }
-          return likes;
+          return item;
+        }),
+      };
+    }
+
+    case ADD_DISLIKE: {
+      return {
+        ...state,
+        posts: state.posts.map((item) => {
+          if (item.id === action.id && item.likesCount > 0) {
+            return {
+              ...item,
+              dislikesCount: item.dislikesCount + 1,
+              likesCount: item.likesCount - 1,
+            };
+          } else if (item.id === action.id) {
+            return {
+              ...item,
+              dislikesCount: item.dislikesCount + 1,
+            };
+          }
+          return item;
         }),
       };
     }
@@ -103,12 +140,13 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPostActionCreator = (newPostText) => ({ type: ADD_POST, newPostText });
-export const deletePostActionCreator = (id) => ({ type: DELETE_POST, id });
+export const addPost = (newPostText) => ({ type: ADD_POST, newPostText });
+export const deletePost = (id) => ({ type: DELETE_POST, id });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile: profile });
 export const setStatus = (status) => ({ type: SET_STATUS, status: status });
 export const savePhotoSuccess = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos: photos });
-export const addLikeActionCreator = (id) => ({ type: ADD_LIKE, id });
+export const addLike = (id) => ({ type: ADD_LIKE, id });
+export const addDislike = (id) => ({ type: ADD_DISLIKE, id });
 
 export const getUserProfile = (userId) => async (dispatch) => {
   const response = await profileAPI.getProfile(userId);

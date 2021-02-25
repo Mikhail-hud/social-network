@@ -1,16 +1,19 @@
 {
-  "homepage":"http://Mikhail-hud.github.io/social-network",
+  "homepage": "http://Mikhail-hud.github.io/social-network",
   "name": "my_app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@hookform/error-message": "0.0.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "antd": "^4.10.3",
     "axios": "^0.20.0",
     "form": "^0.2.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^6.15.1",
     "react-redux": "^7.2.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
@@ -18,7 +21,8 @@
     "redux": "^4.0.5",
     "redux-form": "^8.3.6",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "sass": "^1.32.5"
   },
   "scripts": {
     "predeploy": "npm run build",

@@ -1,34 +1,34 @@
-import React from "react";
-import {useState} from 'react';
-import s from './Paginator.module.css'
+import React from 'react';
+import { Pagination, Row, Col } from 'antd';
 
-let Paginator = ({totalItemsCount,pageSize, onPageChanged, currentPage, portionSize = 5}) => {
-  
-  
-  let pagesCount = Math.ceil(totalItemsCount / pageSize);
+let Paginator = ({ totalItemsCount, pageSize, currentPage, isFetching,onSetCurrentPage,onChangePageSize }) => {
 
-  let pages = [];
+  const onShowSizeChange = (__, pageSize) => {
+    onChangePageSize(pageSize)
+  };
+  const onChange = (currentPage) => {
+    onSetCurrentPage(currentPage)
+  };
 
-  for (let i = 1; i <= pagesCount; i++) {
-    pages.push(i);
-  }
-  
-  let portionCount = Math.ceil(pagesCount / portionSize);
-  let [portionNumber, setPortionNumber] = useState(1)
-  let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
-  let rightPortionPageNumber = portionNumber * portionSize;
   return (
-      <section className={s.pagination}>
-        <span onClick={portionNumber > 1? ()=> setPortionNumber(portionNumber - 1): null} >&laquo;</span> 
-        {pages
-        .filter(p => p >= leftPortionPageNumber &&  p <= rightPortionPageNumber)
-        .map((p, index) => {
-          return (
-            <span onClick={(e) => {onPageChanged(p)}}  key={index} className={currentPage === p ? s.active : ""}>{p}</span>
-          );
-        })}
-        <span onClick={portionCount > portionNumber? ()=> setPortionNumber(portionNumber + 1): null} >&raquo;</span>
-      </section>
+    <Row justify='center'>
+      <Col>
+        <Pagination
+          responsive
+          disabled={isFetching}
+          style={{ textAlign: 'center', marginBottom:'2rem' }}
+          pageSizeOptions={[5, 10, 15, 20, 50]}
+          pageSize={pageSize}
+          current={currentPage}
+          total={totalItemsCount}
+          onShowSizeChange={onShowSizeChange}
+          showSizeChanger
+          onChange={onChange}
+          showQuickJumper
+          showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
+        />
+      </Col>
+    </Row>
   );
 };
 

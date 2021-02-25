@@ -1,15 +1,9 @@
-import React from "react";
-import s from "./Preloader.module.css";
+import React from 'react';
+import { Spin} from 'antd';
 
-const Preloader = (props) => {
+const Preloader = () => {
   return (
-    <div className={s.container}>
-      <div className={s.item_1}></div>
-      <div className={s.item_2}></div>
-      <div className={s.item_3}></div>
-      <div className={s.item_4}></div>
-      <div className={s.item_5}></div>
-    </div>
+      <Spin style={{position:'absolute', left:'50%', top: '0.2%'}} size="large" tip="Loading..." />
   );
 };
 

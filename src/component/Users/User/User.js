@@ -1,35 +1,83 @@
-import React from "react";
-import s from "./User.module.css";
-import logo from "./logo.png";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import logo from '../../../assets/logo.png';
+import { NavLink } from 'react-router-dom';
+import { follow_button, user_list } from './User.module.scss';
+import { List, Button, Row, Col, Skeleton } from 'antd';
+import {
+  UserDeleteOutlined,
+  MessageOutlined,
+  GithubOutlined,
+  UserAddOutlined,
+} from '@ant-design/icons';
 
-let User = ({user,followingInProgress, unFollow, follow}) => {
+let User = (props) => {
+  const { user, followingInProgress, onUnfollow, onFollow, isFetching } = props;
+  const handleFollowUnfollow = (followed, id) => {
+    if (followed) {
+      onUnfollow(id);
+    } else {
+      onFollow(id);
+    }
+  };
   return (
-      <section className={s.users_container} key={user.id}>
-          <div className={s.users_logo}>
-            <div className={s.users_center}>
-              <NavLink to={`/profile/` + user.id}>
-                <img src={user.photos.small !== null ? user.photos.small : logo} alt="dialogs_logo"/>
-              </NavLink>
-            </div>
-            <div className={s.users_center}>
-              {user.followed 
-              ? (<button disabled={followingInProgress.some((id) => id === user.id)} onClick={() => {unFollow(user.id)}} className={s.users_btn} type="button">Unfollow</button>)
-              : (<button disabled={followingInProgress.some((id) => id === user.id)} onClick={() => {follow(user.id)}} className={s.users_btn} type="button">follow</button>)
+    <Row justify="center">
+      <Col xs={24} sm={24} md={18} lg={14} xl={12} xxl={10}>
+        <List
+          className={user_list}
+          itemLayout="vertical"
+          size="large"
+          dataSource={user}
+          renderItem={(item) => (
+            <List.Item
+              key={item.id}
+              actions={
+                !isFetching && [
+                  <Button
+                    className={follow_button}
+                    onClick={() => handleFollowUnfollow(item.followed, item.id)}
+                    disabled={followingInProgress.some((id) => id === item.id)}
+                    type="dashed"
+                    shape="round"
+                    icon={item.followed ? <UserDeleteOutlined /> : <UserAddOutlined />}>
+                    {item.followed ? 'Unfollow' : 'Follow'}
+                  </Button>,
+                  <Button
+                    type="dashed"
+                    shape="round"
+                    disabled={true}
+                    icon={<GithubOutlined />}></Button>,
+                  <NavLink to={`/dialogs`}>
+                    <Button
+                      type="dashed"
+                      shape="round"
+                      disabled={true}
+                      icon={<MessageOutlined />}></Button>
+                  </NavLink>,
+                ]
               }
-            </div>
-          </div>
-          <div className={s.users_text}>
-            <div className={s.users_info}>
-              <h3>{user.name}</h3>
-              <p>{user.status}</p>
-            </div>
-            <div className={s.users_info}>
-              <p>{"User Country"}</p>
-              <p>{"User City"}</p>
-            </div>
-          </div>
-      </section>
+              extra={
+                !isFetching && (
+                  <NavLink to={`/profile/` + item.id}>
+                    <img
+                      width={100}
+                      style={{ borderRadius: '50%' }}
+                      alt="logo"
+                      src={item.photos.small !== null ? item.photos.small : logo}
+                    />
+                  </NavLink>
+                )
+              }>
+              <Skeleton loading={isFetching} active shape>
+                <List.Item.Meta
+                  title={<NavLink to={`/profile/` + item.id}>{item.name}</NavLink>}
+                  description={item.status}
+                />
+              </Skeleton>
+            </List.Item>
+          )}
+        />
+      </Col>
+    </Row>
   );
 };
 

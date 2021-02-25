@@ -1,0 +1,17 @@
+@import '../../../scss/app.scss';
+
+.user_list {
+  .follow_button {
+    background: none !important;
+    width: 110px;
+    &:hover {
+      @include hover-blue;
+    }
+  }
+  button {
+    background: none !important;
+    &:hover {
+      @include hover-blue;
+    }
+  }
+}
