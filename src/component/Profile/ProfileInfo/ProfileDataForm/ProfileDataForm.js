@@ -22,10 +22,11 @@ const formItemLayout = {
 
 const ProfileDataForm = ({ profile, error, editMode, setEditMode, saveProfile }) => {
   const onFinish = (values) => {
-    // saveProfile(values);
-    console.log('values', values);
+    saveProfile(values).then(() => {
+      setEditMode(false);
+    });
   };
-  // console.log(profile);
+
   return (
     <Drawer
       title="Profile Details"
@@ -84,7 +85,9 @@ const ProfileDataForm = ({ profile, error, editMode, setEditMode, saveProfile })
           <Button type="primary" style={{ marginRight: '1rem' }} htmlType="submit">
             Save
           </Button>
-          <Button type="primary">Cancel</Button>
+          <Button onClick={() => setEditMode(false)} type="primary">
+            Cancel
+          </Button>
         </Form.Item>
       </Form>
     </Drawer>
