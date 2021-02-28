@@ -1,5 +1,6 @@
 import React from 'react';
-import { Drawer, Form, Button, Col, Row, Input, Checkbox } from 'antd';
+import { Drawer, Form, Button, Input, Checkbox } from 'antd';
+import { useSelector } from 'react-redux';
 
 const formItemLayout = {
   labelCol: {
@@ -20,7 +21,9 @@ const formItemLayout = {
   },
 };
 
-const ProfileDataForm = ({ profile, error, editMode, setEditMode, saveProfile }) => {
+const ProfileDataForm = ({ profile, editMode, setEditMode, saveProfile }) => {
+  const error = useSelector(({ profilePage }) => profilePage.error);
+  console.log(error);
   const onFinish = (values) => {
     saveProfile(values).then(() => {
       setEditMode(false);

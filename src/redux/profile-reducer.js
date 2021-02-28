@@ -6,6 +6,7 @@ const SET_STATUS = 'SET-STATUS';
 const SAVE_PHOTO_SUCCESS = 'SAVE-PHOTO-SUCCESS';
 const ADD_LIKE = 'ADD-LIKE';
 const ADD_DISLIKE = 'ADD-DISLIKE';
+const SET_NON_FIELD_ERROR = '/PROFILE-SET-NON-FIELD-ERROR';
 
 let initialState = {
   posts: [
@@ -39,6 +40,7 @@ let initialState = {
   ],
   profile: null,
   status: '',
+  error: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -134,6 +136,12 @@ const profileReducer = (state = initialState, action) => {
         }),
       };
     }
+    case SET_NON_FIELD_ERROR: {
+      return {
+        ...state,
+        ...action.payload,
+      };
+    }
     default:
       return state;
   }
@@ -146,6 +154,7 @@ export const setStatus = (status) => ({ type: SET_STATUS, status: status });
 export const savePhotoSuccess = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos: photos });
 export const addLike = (id) => ({ type: ADD_LIKE, id });
 export const addDislike = (id) => ({ type: ADD_DISLIKE, id });
+export const setNonFieldError = (error) => ({ type: SET_NON_FIELD_ERROR, payload: { error } });
 
 export const getUserProfile = (userId) => async (dispatch) => {
   const response = await profileAPI.getProfile(userId);
@@ -177,6 +186,7 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
   if (response.data.resultCode === 0) {
     dispatch(getUserProfile(userId));
   } else {
+    dispatch(setNonFieldError(response.data.messages[0]))
     // console.log(response.data.messages);
     return Promise.reject(response.data.messages[0]);
   }

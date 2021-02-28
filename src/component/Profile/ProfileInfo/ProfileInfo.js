@@ -26,10 +26,7 @@ const ProfileInfo = ({ profile, savePhoto, saveProfile, isOwner, status, updateS
       savePhoto(e.target.files[0]);
     }
   };
-  // const onSubmit = (formData) => {
-  //   saveProfile(formData);
-  //   setEditMode(false);
-  // };
+ 
   return (
     <>
       <Row className={profile_card}>
