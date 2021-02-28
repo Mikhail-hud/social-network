@@ -22,7 +22,7 @@ const formItemLayout = {
 
 const ProfileDataForm = ({ profile, error, editMode, setEditMode, saveProfile }) => {
   const onFinish = (values) => {
-    saveProfile(values);
+    // saveProfile(values);
     console.log('values', values);
   };
   // console.log(profile);
@@ -75,8 +75,8 @@ const ProfileDataForm = ({ profile, error, editMode, setEditMode, saveProfile })
         </Form.Item>
         {Object.entries(profile.contacts).map(([k, i]) => {
           return (
-            <Form.Item name={`contacts.${k}`} label={k} initialValue={i} key={k}>
-              <Input  placeholder="Please indicate url to your network" />
+            <Form.Item name={['contacts', `${k}`]} label={k} initialValue={i} key={k}>
+              <Input placeholder="Please indicate url to your network" />
             </Form.Item>
           );
         })}
