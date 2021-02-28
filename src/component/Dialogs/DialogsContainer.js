@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { sendMessage } from '../../redux/dialogs-reducer';
 import { useSelector, useDispatch } from 'react-redux';
 import DialogsPage from './DialogsPage';

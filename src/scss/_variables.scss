@@ -15,11 +15,11 @@ $breakpoints: (
 
 @mixin hover-blue {
   color: $blue;
-  transform: translateY(-1px) !important;
+  transform: translateY(-1.5px) !important;
   transition: 0.4s ease-out;
 }
 @mixin hover-translt {
-  transform: translateY(-1px);
+  transform: translateY(-1.5px);
   transition: 0.4s ease-out;
 }
 
