@@ -8,18 +8,20 @@
     border-radius: 5px 0px 5px 0px;
     border-bottom: 1px solid #a785a4 !important;
     color: #313131;
-    font-weight: 200
+    font-weight: 200;
   }
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 5px;
   padding: 3px;
-  cursor: pointer;
   text-align: center;
-  span {
-    &:hover {
-      @include hover-blue;
+  &_active {
+    cursor: pointer;
+    span {
+      &:hover {
+        @include hover-blue;
+      }
     }
   }
 }

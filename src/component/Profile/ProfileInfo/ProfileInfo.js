@@ -16,7 +16,7 @@ import ProfileDataForm from '../ProfileInfo/ProfileDataForm/ProfileDataForm';
 import { Row, Col, Button, Tooltip } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 
-const ProfileInfo = ({ profile, savePhoto, saveProfile, isOwner, status, updateStatus }) => {
+const ProfileInfo = ({ profile, savePhoto, isOwner, status, updateStatus }) => {
   let [editMode, setEditMode] = useState(false);
   if (!profile) {
     return <Preloder />;
@@ -26,7 +26,7 @@ const ProfileInfo = ({ profile, savePhoto, saveProfile, isOwner, status, updateS
       savePhoto(e.target.files[0]);
     }
   };
- 
+
   return (
     <>
       <Row className={profile_card}>
@@ -46,7 +46,7 @@ const ProfileInfo = ({ profile, savePhoto, saveProfile, isOwner, status, updateS
         <Col>
           <img src={profile.photos.large ?? logo} alt="avatar" />
           {isOwner && (
-            <Tooltip title={'Upload your photo!'}>
+            <Tooltip title="Upload your photo!">
               <label>
                 <img src={updateLogo} alt="update-logo"></img>
                 <input type="file" onChange={onMainPhotoSelected} />
@@ -63,7 +63,6 @@ const ProfileInfo = ({ profile, savePhoto, saveProfile, isOwner, status, updateS
           initialValues={profile}
           editMode={editMode}
           setEditMode={setEditMode}
-          saveProfile={saveProfile}
           profile={profile}
         />
         <ProfileDetails profile={profile} isOwner={isOwner} />

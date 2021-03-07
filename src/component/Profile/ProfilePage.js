@@ -8,7 +8,6 @@ const Profile = ({
   updateStatus,
   isOwner,
   savePhoto,
-  saveProfile,
   deletePost,
   addLike,
   addPost,
@@ -26,7 +25,6 @@ const Profile = ({
         updateStatus={updateStatus}
         isOwner={isOwner}
         savePhoto={savePhoto}
-        saveProfile={saveProfile}
       />
       <MyPosts
         isAuth={isAuth}

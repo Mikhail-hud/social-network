@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import s from './ProfileStatus.module.scss';
+import style from './ProfileStatus.module.scss';
+import cn from 'classnames';
 
 const ProfileStatusWithHooks = (props) => {
   let [editMode, setEditMode] = useState(false);
@@ -25,7 +26,7 @@ const ProfileStatusWithHooks = (props) => {
   };
 
   return (
-    <div className={s.status}>
+    <div className={cn(style.status, {[style.status_active]: props.isOwner})}>
       {editMode ? (
         <div>
           <input
