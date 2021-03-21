@@ -1,11 +1,12 @@
 import React from 'react';
-import { friend_card } from './Friend.module.scss';
+import {friend_card} from './Friend.module.scss';
 import logo from '../../../assets/logo.png';
-import { NavLink } from 'react-router-dom';
-import { Card, Row, Col, Button, Popconfirm } from 'antd';
-import { GithubOutlined, UserDeleteOutlined, MessageOutlined } from '@ant-design/icons';
-const { Meta } = Card;
-let Friend = ({ friends, unFollowingInProgress, onUnFollowFriend, isFetchingFriends }) => {
+import {NavLink} from 'react-router-dom';
+import {Card, Row, Col, Button, Popconfirm} from 'antd';
+import {GithubOutlined, UserDeleteOutlined, MessageOutlined} from '@ant-design/icons';
+
+const {Meta} = Card;
+let Friend = ({friends, unFollowingInProgress, onUnFollowFriend, isFetchingFriends}) => {
   const handleUnFollowFriend = (id) => {
     onUnFollowFriend(id);
   };
@@ -19,7 +20,7 @@ let Friend = ({ friends, unFollowingInProgress, onUnFollowFriend, isFetchingFrie
             md={12}
             lg={8}
             xl={6}
-            style={{ display: 'flex', justifyContent: 'space-around' }}
+            style={{display: 'flex', justifyContent: 'space-around'}}
             key={item.id}>
             <Card
               className={friend_card}
@@ -36,7 +37,7 @@ let Friend = ({ friends, unFollowingInProgress, onUnFollowFriend, isFetchingFrie
               cover={
                 !isFetchingFriends && (
                   <NavLink to={`/profile/` + item.id}>
-                    <img alt="logo" src={item.photos.large !== null ? item.photos.large : logo} />
+                    <img alt="logo" src={item.photos.large !== null ? item.photos.large : logo}/>
                   </NavLink>
                 )
               }
@@ -50,14 +51,14 @@ let Friend = ({ friends, unFollowingInProgress, onUnFollowFriend, isFetchingFrie
                     type="dashed"
                     shape="round"
                     disabled={unFollowingInProgress.some((id) => id === item.id)}
-                    icon={<UserDeleteOutlined />}></Button>
+                    icon={<UserDeleteOutlined/>}/>
                 </Popconfirm>,
                 <NavLink to={`/dialogs/${item.id}`}>
-                  <Button type="dashed" shape="round" icon={<MessageOutlined />}></Button>
+                  <Button type="dashed" shape="round" icon={<MessageOutlined/>}/>
                 </NavLink>,
-                <Button type="dashed" shape="round" icon={<GithubOutlined />}></Button>,
+                <Button type="dashed" shape="round" icon={<GithubOutlined/>}/>,
               ]}>
-              <Meta title={item.name} description={item.status} />
+              <Meta title={item.name} description={item.status}/>
             </Card>
           </Col>
         );

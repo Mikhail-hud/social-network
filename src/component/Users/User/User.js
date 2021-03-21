@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from '../../../assets/logo.png';
-import { NavLink } from 'react-router-dom';
-import { follow_button, user_list } from './User.module.scss';
-import { List, Button, Row, Col, Skeleton } from 'antd';
+import {Link} from 'react-router-dom';
+import {follow_button, user_list} from './User.module.scss';
+import {List, Button, Row, Col, Skeleton} from 'antd';
 import {
   UserDeleteOutlined,
   MessageOutlined,
@@ -11,7 +11,7 @@ import {
 } from '@ant-design/icons';
 
 let User = (props) => {
-  const { user, followingInProgress, onUnfollow, onFollow, isFetching } = props;
+  const {user, followingInProgress, onUnfollow, onFollow, isFetching} = props;
   const handleFollowUnfollow = (followed, id) => {
     if (followed) {
       onUnfollow(id);
@@ -38,38 +38,38 @@ let User = (props) => {
                     disabled={followingInProgress.some((id) => id === item.id)}
                     type="dashed"
                     shape="round"
-                    icon={item.followed ? <UserDeleteOutlined /> : <UserAddOutlined />}>
+                    icon={item.followed ? <UserDeleteOutlined/> : <UserAddOutlined/>}>
                     {item.followed ? 'Unfollow' : 'Follow'}
                   </Button>,
                   <Button
                     type="dashed"
                     shape="round"
                     disabled={true}
-                    icon={<GithubOutlined />}></Button>,
-                  <NavLink to={`/dialogs`}>
+                    icon={<GithubOutlined/>}/>,
+                  <Link to={`/dialogs`}>
                     <Button
                       type="dashed"
                       shape="round"
                       disabled={true}
-                      icon={<MessageOutlined />}></Button>
-                  </NavLink>,
+                      icon={<MessageOutlined/>}/>
+                  </Link>,
                 ]
               }
               extra={
                 !isFetching && (
-                  <NavLink to={`/profile/` + item.id}>
+                  <Link to={`/profile/` + item.id}>
                     <img
                       width={100}
-                      style={{ borderRadius: '50%' }}
+                      style={{borderRadius: '50%'}}
                       alt="logo"
                       src={item.photos.small !== null ? item.photos.small : logo}
                     />
-                  </NavLink>
+                  </Link>
                 )
               }>
               <Skeleton loading={isFetching} active shape>
                 <List.Item.Meta
-                  title={<NavLink to={`/profile/` + item.id}>{item.name}</NavLink>}
+                  title={<Link to={`/profile/` + item.id}>{item.name}</Link>}
                   description={item.status}
                 />
               </Skeleton>

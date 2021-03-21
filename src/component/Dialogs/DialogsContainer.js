@@ -2,6 +2,8 @@ import React from 'react';
 import { sendMessage } from '../../redux/dialogs-reducer';
 import { useSelector, useDispatch } from 'react-redux';
 import DialogsPage from './DialogsPage';
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 const DialogsContainer = () => {
   const dispatch = useDispatch();
@@ -15,4 +17,4 @@ const DialogsContainer = () => {
   return <DialogsPage dialogs={dialogs} messages={messages} onSendMessage={onSendMessage} />;
 };
 
-export default DialogsContainer;
+export default compose(withAuthRedirect)(DialogsContainer);

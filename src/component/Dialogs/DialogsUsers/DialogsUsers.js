@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { dialogList } from './DialogsUsers.module.scss';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { List, Avatar, Drawer, Button } from 'antd';
 import { CommentOutlined } from '@ant-design/icons';
 
@@ -31,14 +31,14 @@ const DialogItem = (props) => {
           dataSource={dialogs}
           renderItem={(item) => (
             <List.Item onClick={onClose}>
-              <NavLink to={`/dialogs/${item.id}`}>
+              <Link to={`/dialogs/${item.id}`}>
                 <List.Item.Meta
                   avatar={
                     <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                   }
                   title={item.name}
                 />
-              </NavLink>
+              </Link>
             </List.Item>
           )}
         />

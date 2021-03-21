@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { profile_card, profile_data } from './ProfileInfo.module.scss';
 import logo from '../../../assets/logo.png';
-import github from '../../../assets/github.svg';
-import facebook from '../../../assets/facebook.svg';
-import vk from '../../../assets/vk.svg';
-import mainLink from '../../../assets/mainLink.svg';
-import youtube from '../../../assets/youtube.svg';
-import instagram from '../../../assets/instagram.svg';
-import twitter from '../../../assets/twitter.svg';
-import website from '../../../assets/website.svg';
-import updateLogo from '../../../assets/updateLogo.svg';
+import github from '../../../assets/profileIcon/github.svg';
+import facebook from '../../../assets/profileIcon/facebook.svg';
+import vk from '../../../assets/profileIcon/vk.svg';
+import mainLink from '../../../assets/profileIcon/mainLink.svg';
+import youtube from '../../../assets/profileIcon/youtube.svg';
+import instagram from '../../../assets/profileIcon/instagram.svg';
+import twitter from '../../../assets/profileIcon/twitter.svg';
+import website from '../../../assets/profileIcon/website.svg';
+import updateLogo from '../../../assets/profileIcon/updateLogo.svg';
 import Preloder from '../../../Common/Preloder/Preloader';
 import ProfileStatus from './ProfileStatus';
 import ProfileDataForm from '../ProfileInfo/ProfileDataForm/ProfileDataForm';
@@ -48,7 +48,7 @@ const ProfileInfo = ({ profile, savePhoto, isOwner, status, updateStatus }) => {
           {isOwner && (
             <Tooltip title="Upload your photo!">
               <label>
-                <img src={updateLogo} alt="update-logo"></img>
+                <img src={updateLogo} alt="update-logo"/>
                 <input type="file" onChange={onMainPhotoSelected} />
               </label>
             </Tooltip>
@@ -104,7 +104,7 @@ const ProfileDetails = ({ profile }) => {
         if (item)
           return (
             <a href={item} key={key}>
-              <img src={icon[key]} alt="social-icon"></img>
+              <img src={icon[key]} alt="social-icon"/>
             </a>
           );
         return null;
