@@ -1,5 +1,5 @@
-@import '../scss/libs/normalize';
-@import './variables';
+@import 'libs/normalize';
+@import 'variables';
 
 .thinScrollBar::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 2px #cfd1ce;

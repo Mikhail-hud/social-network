@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { openNotification } from '../../../../Common/helpers';
+import { openNotification } from '../../../../common/helpers';
 import { Comment, Tooltip, Avatar } from 'antd';
-import logo from '../../../../assets/logo.png';
+import logo from '../../../../assets/img/logo.png';
 import moment from 'moment';
 import {
   DislikeOutlined,

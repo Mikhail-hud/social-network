@@ -3,7 +3,6 @@
   margin-top: 5px;
   .logo_block {
     align-self: center;
-    padding-left: 10px;
     img {
       max-width: 100%;
       max-height: 40px;
@@ -18,16 +17,15 @@
   .message_block {
     width: auto;
     display: flex;
-    align-items: center;
-    padding-left: 10px;
     font-size: 14px;
+    padding-left: 10px;
     align-items: baseline;
     p {
       width: 100%;
       min-height: 30px;
       min-width: 30px;
       background-color: #fff;
-      border-radius: 0px 15px 15px 15px;
+      border-radius: 0 15px 15px 15px;
       filter: drop-shadow(0px 1px 2px rgba(129 129 177 / 45%));
       padding: 10px;
     }

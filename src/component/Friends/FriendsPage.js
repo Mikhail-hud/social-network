@@ -1,5 +1,5 @@
 import React from 'react';
-import Paginator from '../../Common/Paginator/Paginator';
+import Paginator from '../../common/Paginator/Paginator';
 import Friend from './Friend/Friend';
 
 let Friends = React.memo(

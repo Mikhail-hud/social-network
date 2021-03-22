@@ -1,7 +1,7 @@
 import React from 'react';
-import { Pagination, Row, Col } from 'antd';
+import {Pagination, Row, Col} from 'antd';
 
-let Paginator = ({ totalItemsCount, pageSize, currentPage, isFetching,onSetCurrentPage,onChangePageSize }) => {
+let Paginator = ({totalItemsCount, pageSize, currentPage, isFetching, onSetCurrentPage, onChangePageSize}) => {
 
   const onShowSizeChange = (__, pageSize) => {
     onChangePageSize(pageSize)
@@ -16,7 +16,7 @@ let Paginator = ({ totalItemsCount, pageSize, currentPage, isFetching,onSetCurre
         <Pagination
           responsive
           disabled={isFetching}
-          style={{ textAlign: 'center', marginBottom:'2rem' }}
+          style={{textAlign: 'center', marginBottom: '2rem'}}
           pageSizeOptions={[5, 10, 15, 20, 50]}
           pageSize={pageSize}
           current={currentPage}

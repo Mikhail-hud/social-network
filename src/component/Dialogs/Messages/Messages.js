@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { container, message_block, logo_block } from './Messages.module.scss';
-import logo from '../../../assets/logo.png';
+import logo from '../../../assets/img/logo.png';
 import { Row, Col } from 'antd';
 const Message = (props) => {
   const { messages } = props;

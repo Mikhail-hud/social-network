@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.10.3",
     "axios": "^0.20.0",
+    "caniuse-lite": "^1.0.30001203",
     "classnames": "^2.2.6",
     "form": "^0.2.4",
     "moment": "^2.29.1",

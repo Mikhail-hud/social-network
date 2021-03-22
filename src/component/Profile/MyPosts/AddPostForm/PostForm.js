@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Row, Col, Typography, Button } from 'antd';
 import { SendOutlined } from '@ant-design/icons';
-import { openNotification } from '../../../../Common/helpers';
+import { openNotification } from '../../../../common/helpers';
 
 const PostForm = (props) => {
   const { isAuth, addPost } = props;

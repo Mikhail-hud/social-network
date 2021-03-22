@@ -1,5 +1,5 @@
 import React from 'react';
-import Paginator from '../../Common/Paginator/Paginator';
+import Paginator from '../../common/Paginator/Paginator';
 import User from './User/User';
 
 let Users = React.memo(
@@ -26,13 +26,6 @@ let Users = React.memo(
       </>
     );
   },
-  // (prevProps, nextProps) => {
-  //   if (prevProps.currentPage === nextProps.currentPage) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // },
 );
 
 export default Users;

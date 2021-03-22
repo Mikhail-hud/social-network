@@ -9,7 +9,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import { compose } from 'redux';
 import { connect, Provider } from 'react-redux';
 import { initializeApp } from '../../redux/app-reducer';
-import Preloader from '../../Common/Preloder/Preloader';
+import Preloader from '../../common/Preloder/Preloader';
 import { withSuspense } from '../../hoc/withSuspense';
 import 'antd/dist/antd.css';
 import { Layout } from 'antd';

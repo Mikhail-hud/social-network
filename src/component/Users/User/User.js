@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../../assets/logo.png';
+import logo from '../../../assets/img/logo.png';
 import {Link} from 'react-router-dom';
 import {follow_button, user_list} from './User.module.scss';
 import {List, Button, Row, Col, Skeleton} from 'antd';

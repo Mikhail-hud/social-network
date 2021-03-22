@@ -1,6 +1,6 @@
 import React from 'react';
 import {friend_card} from './Friend.module.scss';
-import logo from '../../../assets/logo.png';
+import logo from '../../../assets/img/logo.png';
 import {NavLink} from 'react-router-dom';
 import {Card, Row, Col, Button, Popconfirm} from 'antd';
 import {GithubOutlined, UserDeleteOutlined, MessageOutlined} from '@ant-design/icons';
